@@ -1,6 +1,6 @@
 import logThis from './consoleLog';
 import './styles/index.css';
-import LegoDJ from  './assets/images/lego_dj.jpg';
+import LegoDJ from './assets/images/lego_dj.jpg';
 
 logThis('webpack');
 document.write('<h1>Sound Temple</h1>');
@@ -17,3 +17,10 @@ imageElement.setAttribute('src', LegoDJ);
 imageWrapperElement.appendChild(imageElement);
 rootElement.appendChild(imageWrapperElement);
 document.querySelector('body').appendChild(rootElement);
+
+if (module.hot){
+    module.hot.accept('./consoleLog.js', function () {
+        console.log('Accepting the updated printMe module!');
+        logThis('webpack');
+    });
+}
