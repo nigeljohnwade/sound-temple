@@ -1,0 +1,21 @@
+{
+  "name": "sound-temple",
+  "version": "1.0.0",
+  "description": "Sound and audio utilities",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "Nigel Wade",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "css-loader": "^3.5.2",
+    "file-loader": "^6.0.0",
+    "style-loader": "^1.1.3"
+  }
+}
