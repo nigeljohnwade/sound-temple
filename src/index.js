@@ -1,4 +1,4 @@
-import logThis from './consoleLog';
+import { logThis } from './console';
 import './styles/index.css';
 import LegoDJ from './assets/images/lego_dj.jpg';
 
@@ -14,10 +14,6 @@ document.write('<p class="controller5">CSS Extract</p>');
 document.write('<p class="controller5">Production optimisation</p>');
 document.write('<p class="controller5">Service worker</p>');
 
-if (process.env.NODE_ENV !== 'production') {
-    console.log('Looks like we are in development mode!');
-}
-
 const rootElement = document.createElement('div');
 const imageWrapperElement = document.createElement('div');
 const imageElement = document.createElement('img');
@@ -27,18 +23,19 @@ rootElement.appendChild(imageWrapperElement);
 document.querySelector('body').appendChild(rootElement);
 
 if (module.hot) {
-    module.hot.accept('./consoleLog.js', function () {
-        console.log('Accepting the updated printMe module!');
+    module.hot.accept('./console.js', function () {
         logThis('webpack');
     });
 }
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').then(registration => {
-            console.log('SW registered: ', registration);
-        }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
+if (process.env.NODE_ENV === 'production') {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                console.log('SW registered: ', registration);
+            }).catch(registrationError => {
+                console.log('SW registration failed: ', registrationError);
+            });
         });
-    });
+    }
 }

@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     entry: {
         app: './src/index.js',
-        consoleLog: './src/consoleLog.js'
+        consoleLog: './src/console.js'
     },
     output: {
         filename: '[name].bundle.js',
