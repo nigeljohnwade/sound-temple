@@ -8,4 +8,15 @@ module.exports = merge(common, {
         contentBase: './dist',
         hot: true,
     },
+    module: {
+        rules:[
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ],
+            },
+        ]
+    }
 });

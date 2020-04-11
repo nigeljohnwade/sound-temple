@@ -10,6 +10,10 @@ document.write('<p class="controller5">output</p>');
 document.write('<p class="controller5">watch files</p>');
 document.write('<p class="controller5">dev server</p>');
 
+if (process.env.NODE_ENV !== 'production') {
+    console.log('Looks like we are in development mode!');
+}
+
 const rootElement = document.createElement('div');
 const imageWrapperElement = document.createElement('div');
 const imageElement = document.createElement('img');
@@ -18,7 +22,7 @@ imageWrapperElement.appendChild(imageElement);
 rootElement.appendChild(imageWrapperElement);
 document.querySelector('body').appendChild(rootElement);
 
-if (module.hot){
+if (module.hot) {
     module.hot.accept('./consoleLog.js', function () {
         console.log('Accepting the updated printMe module!');
         logThis('webpack');
