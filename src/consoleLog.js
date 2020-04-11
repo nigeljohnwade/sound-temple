@@ -1,4 +1,6 @@
 export default function logThis(logThis) {
-    console.log('Logging...');
-    console.log(logThis);
+    if (process.env.NODE_ENV !== 'production') {
+        console.log('Logging...');
+        console.log(logThis);
+    }
 }

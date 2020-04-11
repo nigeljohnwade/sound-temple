@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.production.js",
-    "start": "webpack-dev-server --open --config webpack.development.js"
+    "start": "webpack-dev-server --open --config webpack.development.js",
+    "start-http": "http-server dist"
   },
   "author": "Nigel Wade",
   "license": "ISC",
@@ -23,7 +24,8 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "dependencies": {}
 }

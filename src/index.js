@@ -9,6 +9,10 @@ document.write('<p>assets</p>');
 document.write('<p class="controller5">output</p>');
 document.write('<p class="controller5">watch files</p>');
 document.write('<p class="controller5">dev server</p>');
+document.write('<p class="controller5">HMR</p>');
+document.write('<p class="controller5">CSS Extract</p>');
+document.write('<p class="controller5">Production optimisation</p>');
+document.write('<p class="controller5">Service worker</p>');
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Looks like we are in development mode!');
@@ -26,5 +30,15 @@ if (module.hot) {
     module.hot.accept('./consoleLog.js', function () {
         console.log('Accepting the updated printMe module!');
         logThis('webpack');
+    });
+}
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+            console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+        });
     });
 }

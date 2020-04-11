@@ -1,9 +1,10 @@
 const merge = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {BundleStatsWebpackPlugin} = require('bundle-stats-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -18,7 +19,7 @@ module.exports = merge(common, {
         }
     },
     devtool: 'source-map',
-    plugins:[
+    plugins: [
         new CleanWebpackPlugin(),
         new BundleStatsWebpackPlugin({
             html: true,
@@ -30,6 +31,12 @@ module.exports = merge(common, {
             filename: '[name].[contenthash].css',
             chunkFilename: '[id].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
+        }),
+        new WorkboxPlugin.GenerateSW({
+            // these options encourage the ServiceWorkers to get in there fast
+            // and not allow any straggling "old" SWs to hang around
+            clientsClaim: true,
+            skipWaiting: true,
         }),
     ],
     module: {
