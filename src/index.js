@@ -1,4 +1,7 @@
-import { logThis } from './console';
+import {
+    logThis,
+    dirThis,
+} from './console';
 import './styles/index.css';
 import LegoDJ from './assets/images/lego_dj.jpg';
 
@@ -21,6 +24,8 @@ imageElement.setAttribute('src', LegoDJ);
 imageWrapperElement.appendChild(imageElement);
 rootElement.appendChild(imageWrapperElement);
 document.querySelector('body').appendChild(rootElement);
+
+dirThis(rootElement);
 
 if (module.hot) {
     module.hot.accept('./console.js', function () {

@@ -4,3 +4,10 @@ export function logThis(thingToLog) {
         console.log(thingToLog);
     }
 }
+
+export function dirThis(thingToDir) {
+    if (process.env.NODE_ENV !== 'production') {
+        console.log('Node to dir - ');
+        console.dir(thingToDir);
+    }
+}
