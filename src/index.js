@@ -7,12 +7,12 @@ document.write('<h1>Sound Temple</h1>');
 document.write('<p class="controller3">webpack</p>');
 document.write('<p>assets</p>');
 document.write('<p class="controller5">output</p>');
-document.write('<p class="controller5">watch files</p>');
-document.write('<p class="controller5">dev server</p>');
-document.write('<p class="controller5">HMR</p>');
+document.write('<p class="controller1">watch files</p>');
+document.write('<p class="controller4Ext">dev server</p>');
+document.write('<p class="controller3">HMR</p>');
 document.write('<p class="controller5">CSS Extract</p>');
-document.write('<p class="controller5">Production optimisation</p>');
-document.write('<p class="controller5">Service worker</p>');
+document.write('<p class="controller1">Production optimisation</p>');
+document.write('<p class="controller4Ext">Service worker</p>');
 
 const rootElement = document.createElement('div');
 const imageWrapperElement = document.createElement('div');

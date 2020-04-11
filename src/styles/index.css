@@ -37,10 +37,19 @@ h1{
     font-family: Controller4Ext;
 }
 
+.controller1{
+    font-family: Controller1;
+}
+
 .controller3{
     font-family: Controller3;
 }
 
 .controller5{
     font-family: Controller5;
+}
+
+
+.controller4Ext{
+    font-family: Controller4Ext;
 }
