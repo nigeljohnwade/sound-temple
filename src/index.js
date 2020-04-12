@@ -1,38 +1,28 @@
-import {
-    logThis,
-    dirThis,
-} from './console';
+import { dirThis, logThis, } from './console';
 import './styles/index.css';
-import LegoDJ from './assets/images/lego_dj.jpg';
+
+const appRootSelector = 'body';
+const appRoot = document.querySelector(appRootSelector);
+appRoot.classList.add('appRoot');
+const h1Element = document.createElement('h1');
+h1Element.textContent = 'Sound Temple';
+appRoot.appendChild(h1Element);
 
 logThis('webpack');
-document.write('<h1>Sound Temple</h1>');
-document.write('<p class="controller3">webpack</p>');
-document.write('<p>assets</p>');
-document.write('<p class="controller5">output</p>');
-document.write('<p class="controller1">watch files</p>');
-document.write('<p class="controller4Ext">dev server</p>');
-document.write('<p class="controller3">HMR</p>');
-document.write('<p class="controller5">CSS Extract</p>');
-document.write('<p class="controller1">Production optimisation</p>');
-document.write('<p class="controller4Ext">Service worker</p>');
+dirThis(appRoot);
+dirThis(document.querySelectorAll('*'));
+dirThis('hello');
+dirThis(111);
 
-const rootElement = document.createElement('div');
-const imageWrapperElement = document.createElement('div');
-const imageElement = document.createElement('img');
-imageElement.setAttribute('src', LegoDJ);
-imageWrapperElement.appendChild(imageElement);
-rootElement.appendChild(imageWrapperElement);
-document.querySelector('body').appendChild(rootElement);
-
-dirThis(rootElement);
-
+// example of HMR code
 if (module.hot) {
     module.hot.accept('./console.js', function () {
         logThis('webpack');
+        dirThis(appRoot);
     });
 }
 
+// only register service worker in production build
 if (process.env.NODE_ENV === 'production') {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
