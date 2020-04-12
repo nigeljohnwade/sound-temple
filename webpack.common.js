@@ -34,6 +34,10 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Sound Temple',
+            scriptLoading: 'defer',
+            hash: true,
+        }),
     ]
 };
