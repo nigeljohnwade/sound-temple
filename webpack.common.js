@@ -39,5 +39,8 @@ module.exports = {
             scriptLoading: 'defer',
             hash: true,
         }),
-    ]
+    ],
+    resolve: {
+        modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    }
 };

@@ -1,24 +1,31 @@
-import { dirThis, logThis, } from './console';
+import { dirThis, } from 'console';
 import './styles/index.css';
+import { InitApp } from 'AppModule';
+import { CreateStore } from './DataStore';
+import { initPattern } from './data/korgVolcaInitialData';
 
-const appRootSelector = 'body';
-const appRoot = document.querySelector(appRootSelector);
-appRoot.classList.add('appRoot');
-const h1Element = document.createElement('h1');
-h1Element.textContent = 'Sound Temple';
-appRoot.appendChild(h1Element);
+const App = InitApp({
+    appRootSelector: 'body',
+    appH1Text: 'Sound Temple'
+});
 
-logThis('webpack');
-dirThis(appRoot);
-dirThis(document.querySelectorAll('*'));
-dirThis('hello');
-dirThis(111);
+const store = CreateStore({
+    initialData: {
+        pattern1: {
+            ...initPattern,
+        },
+    },
+});
+
+dirThis(store);
+dirThis(App.root);
+dirThis(App.h1);
 
 // example of HMR code
 if (module.hot) {
     module.hot.accept('./console.js', function () {
-        logThis('webpack');
-        dirThis(appRoot);
+        dirThis(App.root);
+        dirThis(App.h1);
     });
 }
 
