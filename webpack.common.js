@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {BundleStatsWebpackPlugin} = require('bundle-stats-webpack-plugin');
 
 module.exports = {
     entry: {
         app: './src/index.js',
-        consoleLog: './src/console.js'
+        consoleLog: './src/index.js'
     },
     output: {
         filename: '[name].[hash].bundle.js',
@@ -19,6 +19,24 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    'useBuiltIns': 'entry',
+                                    'targets': 'last 1 version',
+                                },
+                            ]
+                        ]
+                    }
+                }
+            },
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [

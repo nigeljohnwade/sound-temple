@@ -1,8 +1,8 @@
-import { dirThis, } from 'console';
-import './styles/index.css';
+import { dirThis, logThis } from 'ConsoleUtilities';
 import { InitApp } from 'AppModule';
-import { CreateStore } from './DataStore';
-import { initPattern } from './data/korgVolcaInitialData';
+import { CreateStore } from 'DataStore';
+import { initPattern } from 'data/korgVolcaInitialData';
+import './styles/index.css';
 
 const App = InitApp({
     appRootSelector: 'body',
@@ -17,13 +17,16 @@ const store = CreateStore({
     },
 });
 
+const storeBlank = CreateStore({});
+const optional = store?.nonExistantMethod?.();
+logThis(optional);
 dirThis(store);
 dirThis(App.root);
 dirThis(App.h1);
 
 // example of HMR code
 if (module.hot) {
-    module.hot.accept('./console.js', function () {
+    module.hot.accept('./index.js', function () {
         dirThis(App.root);
         dirThis(App.h1);
     });
