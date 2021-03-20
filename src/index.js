@@ -1,28 +1,24 @@
 import { dirThis, logThis } from 'ConsoleUtilities';
 import { InitApp } from 'AppModule';
 import { CreateStore } from 'DataStore';
-import { initPattern } from 'data/korgVolcaInitialData';
+import { initPattern } from '../src/data/korgVolcaBeatsInitialData';
 import './styles/index.css';
-
-const App = InitApp({
-    appRootSelector: 'body',
-    appH1Text: 'Sound Temple'
-});
 
 const store = CreateStore({
     initialData: {
-        pattern1: {
-            ...initPattern,
-        },
+        patterns: [
+            {...initPattern},
+        ],
     },
 });
 
-const storeBlank = CreateStore({});
-const optional = store?.nonExistantMethod?.();
-logThis(optional);
-dirThis(store);
-dirThis(App.root);
-dirThis(App.h1);
+const App = InitApp({
+    appRootSelector: 'body',
+    appH1Text: 'Sound Temple',
+    store: store,
+});
+
+logThis(store);
 
 // example of HMR code
 if (module.hot) {

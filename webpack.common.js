@@ -6,7 +6,6 @@ const {BundleStatsWebpackPlugin} = require('bundle-stats-webpack-plugin');
 module.exports = {
     entry: {
         app: './src/index.js',
-        consoleLog: './src/index.js'
     },
     output: {
         filename: '[name].[hash].bundle.js',
